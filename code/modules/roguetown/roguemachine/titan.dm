@@ -13,7 +13,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 
 /obj/structure/roguemachine/titan
 	name = "trono"
-	desc = "Quien lleve la corona, poseera la llave a esta extraña cosa. Si todo falla, solo teneis que exclamar \"ayuda\""
+	desc = "Quien lleve la corona, poseera la llave a esta extraña cosa. Si todo falla, solo teneis que exclamar \"secretos del trono\""
 	icon = 'icons/roguetown/misc/machines.dmi'
 	icon_state = ""
 	density = FALSE
@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			playsound(src, 'sound/misc/hiss.ogg', 100, FALSE, -1)
 	switch(mode)
 		if(0)
-			if(findtext(message, "ayuda"))
+			if(findtext(message, "secretos del trono"))
 				say("Mis comandos son: Establecer Decreto, Realizar Anuncio, Establecer Impuestos, Declarar Fugitivo, Invocar Corona, Invocar Llave, Crear Ley, Remover Ley, Purgar Leyes, Olvidalo")
 				playsound(src, 'sound/misc/machinelong.ogg', 100, FALSE, -1)
 			if(findtext(message, "realizar anuncio"))
@@ -252,7 +252,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 			return
 		newtax = CLAMP(newtax, 1, 99)
 		SStreasury.tax_value = newtax / 100
-		priority_announce("El nuevo impuesto en Azure Peak debera ser del [newtax] porciento.", "El Generoso Rey Establece", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
+		priority_announce("El nuevo impuesto en Azure Peak debera ser del [newtax] porciento.", "El Generoso Duque Establece", pick('sound/misc/royal_decree.ogg', 'sound/misc/royal_decree2.ogg'), "Captain")
 
 
 /obj/structure/roguemachine/titan/proc/make_announcement(mob/living/user, raw_message)
@@ -308,7 +308,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 /proc/make_outlaw(raw_message)
 	if(raw_message in GLOB.outlawed_players)
 		GLOB.outlawed_players -= raw_message
-		priority_announce("[raw_message] ya no es un fugitivo en Azure Peak.", "El Rey Decreta", 'sound/misc/royal_decree.ogg', "Captain")
+		priority_announce("[raw_message] ya no es un fugitivo en Azure Peak.", "El Duque Decreta", 'sound/misc/royal_decree.ogg', "Captain")
 		return FALSE
 	var/found = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
@@ -317,7 +317,7 @@ GLOBAL_LIST_INIT(laws_of_the_land, initialize_laws_of_the_land())
 	if(!found)
 		return FALSE
 	GLOB.outlawed_players += raw_message
-	priority_announce("[raw_message] ha sido declarado un fugitivo, debera ser capturado o ejecutado.", "El Rey Decreta", 'sound/misc/royal_decree2.ogg', "Captain")
+	priority_announce("[raw_message] ha sido declarado un fugitivo, debera ser capturado o ejecutado.", "El Duque Decreta", 'sound/misc/royal_decree2.ogg', "Captain")
 	return TRUE
 
 /proc/make_law(raw_message)
