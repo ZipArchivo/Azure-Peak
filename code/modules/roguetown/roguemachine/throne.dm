@@ -1,5 +1,6 @@
 GLOBAL_VAR(king_throne)
 
+
 /obj/structure/roguethrone
 	name = "trono de Azure Peak"
 	desc = "Quien lleve la corona, poseera la llave a esta extraña cosa. Si todo falla, solo teneis que exclamar \"ayuda\""
